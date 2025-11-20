@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile Form</title>
+    <style>
+        <!-- DESIGN CSS -->
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            animation: slideIn 0.5s ease-out;
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .char-counter {
+            float: right;
+            font-size: 0.8em;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: #f8f9fa;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .validation-message {
+            display: block;
+            font-size: 0.8em;
+            margin-top: 5px;
+            min-height: 15px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Personal Profile</h1>
+        <p class="subtitle">Create your personal profile to share with others</p>
+        
+        <form action="ProfileServlet" method="POST" onsubmit="return validateForm()">
+            <div class="form-section">
+                <div class="section-title">
+                    <span>👤 Personal Information</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" 
+                           placeholder="Hasnul Fitri" required
+                           oninput="validateName()">
+                    <span class="validation-message" id="name-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentId">Student ID <span class="required">*</span></label>
+                    <input type="text" id="studentId" name="studentId" 
+                           placeholder="2025162983" required
+                           oninput="validateStudentId()">
+                    <span class="validation-message" id="studentId-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="program">Program <span class="required">*</span></label>
+                    <input type="text" id="program" name="program" 
+                           placeholder="Computer Science" required>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">
+                    <span>📞 Contact Information</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" 
+                           placeholder="your.email@example.com" required
+                           onblur="validateEmail()">
+                    <span class="validation-message" id="email-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp Number</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" 
+                           placeholder="600123456789">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">
+                    <span>🌐 Social Media</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="instagram">Instagram Username</label>
+                    <input type="text" id="instagram" name="instagram" 
+                           placeholder="@username">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">
+                    <span>💭 About Me</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hobbies">Hobbies & Interests <span class="required">*</span></label>
+                    <input type="text" id="hobbies" name="hobbies" 
+                           placeholder="Reading, Gaming, Photography, Hiking" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="introduction">Self Introduction 
+                        <span class="required">*</span>
+                        <span class="char-counter">0/1000</span>
+                    </label>
+                    <textarea id="introduction" name="introduction" 
+                              placeholder="Tell us about yourself..." 
+                              maxlength="1000" 
+                              oninput="updateCharCounter()" 
+                              required></textarea>
+                    <span class="validation-message" id="intro-error"></span>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                Create My Profile
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // Addtional feature untuk bagi lagi secure
+        // Character counter
+        function updateCharCounter() {
+            const textarea = document.getElementById('introduction');
+            const counter = document.querySelector('.char-counter');
+            const currentLength = textarea.value.length;
+            counter.textContent = `${currentLength}/1000`;
+            
+            if (currentLength > 900) {
+                counter.style.color = 'orange';
+            } else if (currentLength > 10) {
+                counter.style.color = 'green';
+            } else {
+                counter.style.color = '#666';
+            }
+            
+            // Validate minimum length
+            const errorSpan = document.getElementById('intro-error');
+            if (currentLength < 20) {
+                errorSpan.textContent = "Please write at least 20 characters about yourself";
+                errorSpan.style.color = "red";
+            } else {
+                errorSpan.textContent = "✓ Good length";
+                errorSpan.style.color = "green";
+            }
+        }
+
+        // Validation functions
+        function validateName() {
+            const name = document.getElementById('name').value;
+            const errorSpan = document.getElementById('name-error');
+            
+            if (name.length < 2) {
+                errorSpan.textContent = "Please your full name";
+                errorSpan.style.color = "red";
+                return false;
+            } else {
+                errorSpan.textContent = "✓ Looks good";
+                errorSpan.style.color = "green";
+                return true;
+            }
+        }
+
+        function validateStudentId() {
+            const studentId = document.getElementById('studentId').value;
+            const errorSpan = document.getElementById('studentId-error');
+            const idRegex = /^\d{10}$/;
+            
+            if (!idRegex.test(studentId)) {
+                errorSpan.textContent = "Student ID must be exactly 10 digits";
+                errorSpan.style.color = "red";
+                return false;
+            } else {
+                errorSpan.textContent = "✓ Valid student ID";
+                errorSpan.style.color = "green";
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = document.getElementById('email').value;
+            const errorSpan = document.getElementById('email-error');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                errorSpan.textContent = "Please enter a valid email address";
+                errorSpan.style.color = "red";
+                return false;
+            } else {
+                errorSpan.textContent = "✓ Valid email";
+                errorSpan.style.color = "green";
+                return true;
+            }
+        }
+
+        function validateForm() {
+            const isNameValid = validateName();
+            const isStudentIdValid = validateStudentId();
+            const isEmailValid = validateEmail();
+            const introLength = document.getElementById('introduction').value.length;
+            
+            if (introLength < 10) {
+                document.getElementById('intro-error').textContent = "Please write at least 10 characters about yourself";
+                document.getElementById('intro-error').style.color = "red";
+                return false;
+            }
+            
+            return isNameValid && isStudentIdValid && isEmailValid;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCharCounter();
+        });
+    </script>
+</body>
+</html>

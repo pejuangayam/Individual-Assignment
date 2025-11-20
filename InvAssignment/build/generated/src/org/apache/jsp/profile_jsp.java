@@ -1,0 +1,347 @@
+package org.apache.jsp;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.jsp.*;
+
+public final class profile_jsp extends org.apache.jasper.runtime.HttpJspBase
+    implements org.apache.jasper.runtime.JspSourceDependent {
+
+  private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
+
+  private static java.util.List<String> _jspx_dependants;
+
+  private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
+
+  public java.util.List<String> getDependants() {
+    return _jspx_dependants;
+  }
+
+  public void _jspService(HttpServletRequest request, HttpServletResponse response)
+        throws java.io.IOException, ServletException {
+
+    PageContext pageContext = null;
+    HttpSession session = null;
+    ServletContext application = null;
+    ServletConfig config = null;
+    JspWriter out = null;
+    Object page = this;
+    JspWriter _jspx_out = null;
+    PageContext _jspx_page_context = null;
+
+    try {
+      response.setContentType("text/html; charset=UTF-8");
+      pageContext = _jspxFactory.getPageContext(this, request, response,
+      			null, true, 8192, true);
+      _jspx_page_context = pageContext;
+      application = pageContext.getServletContext();
+      config = pageContext.getServletConfig();
+      session = pageContext.getSession();
+      out = pageContext.getOut();
+      _jspx_out = out;
+      _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
+
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html lang=\"en\">\n");
+      out.write("<head>\n");
+      out.write("    <meta charset=\"UTF-8\">\n");
+      out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
+      out.write("    <title>Profile - ");
+      out.print( request.getAttribute("name") );
+      out.write("</title>\n");
+      out.write("    <style>\n");
+      out.write("        * {\n");
+      out.write("            margin: 0;\n");
+      out.write("            padding: 0;\n");
+      out.write("            box-sizing: border-box;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        body {\n");
+      out.write("            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n");
+      out.write("            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n");
+      out.write("            min-height: 100vh;\n");
+      out.write("            padding: 40px 20px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .profile-container {\n");
+      out.write("            max-width: 800px;\n");
+      out.write("            margin: 0 auto;\n");
+      out.write("            background: white;\n");
+      out.write("            border-radius: 20px;\n");
+      out.write("            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\n");
+      out.write("            overflow: hidden;\n");
+      out.write("            animation: fadeIn 0.6s ease-out;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        @keyframes fadeIn {\n");
+      out.write("            from {\n");
+      out.write("                opacity: 0;\n");
+      out.write("                transform: scale(0.95);\n");
+      out.write("            }\n");
+      out.write("            to {\n");
+      out.write("                opacity: 1;\n");
+      out.write("                transform: scale(1);\n");
+      out.write("            }\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        /* Header Section */\n");
+      out.write("        .profile-header {\n");
+      out.write("            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n");
+      out.write("            color: white;\n");
+      out.write("            padding: 40px;\n");
+      out.write("            text-align: center;\n");
+      out.write("            position: relative;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .profile-header::before {\n");
+      out.write("            content: \"✓\";\n");
+      out.write("            position: absolute;\n");
+      out.write("            top: 20px;\n");
+      out.write("            right: 20px;\n");
+      out.write("            background: rgba(255, 255, 255, 0.2);\n");
+      out.write("            width: 40px;\n");
+      out.write("            height: 40px;\n");
+      out.write("            border-radius: 50%;\n");
+      out.write("            display: flex;\n");
+      out.write("            align-items: center;\n");
+      out.write("            justify-content: center;\n");
+      out.write("            font-size: 24px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .profile-header h1 {\n");
+      out.write("            font-size: 2.5em;\n");
+      out.write("            margin-bottom: 10px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .student-id {\n");
+      out.write("            font-size: 1.1em;\n");
+      out.write("            opacity: 0.9;\n");
+      out.write("            letter-spacing: 1px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        /* Profile Body */\n");
+      out.write("        .profile-body {\n");
+      out.write("            padding: 40px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .profile-section {\n");
+      out.write("            margin-bottom: 30px;\n");
+      out.write("            padding-bottom: 25px;\n");
+      out.write("            border-bottom: 2px solid #f0f0f0;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .profile-section:last-child {\n");
+      out.write("            border-bottom: none;\n");
+      out.write("            margin-bottom: 0;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .section-title {\n");
+      out.write("            color: #667eea;\n");
+      out.write("            font-size: 1.1em;\n");
+      out.write("            font-weight: 600;\n");
+      out.write("            margin-bottom: 12px;\n");
+      out.write("            display: flex;\n");
+      out.write("            align-items: center;\n");
+      out.write("            gap: 10px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .section-content {\n");
+      out.write("            color: #333;\n");
+      out.write("            font-size: 1.05em;\n");
+      out.write("            line-height: 1.6;\n");
+      out.write("            padding-left: 30px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .icon {\n");
+      out.write("            display: inline-block;\n");
+      out.write("            width: 24px;\n");
+      out.write("            height: 24px;\n");
+      out.write("            text-align: center;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        /* Introduction Box */\n");
+      out.write("        .introduction-box {\n");
+      out.write("            background: #f8f9ff;\n");
+      out.write("            padding: 20px;\n");
+      out.write("            border-radius: 12px;\n");
+      out.write("            border-left: 4px solid #667eea;\n");
+      out.write("            margin-left: 30px;\n");
+      out.write("            line-height: 1.8;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        /* Hobbies Tags */\n");
+      out.write("        .hobbies-container {\n");
+      out.write("            display: flex;\n");
+      out.write("            flex-wrap: wrap;\n");
+      out.write("            gap: 10px;\n");
+      out.write("            margin-left: 30px;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .hobby-tag {\n");
+      out.write("            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n");
+      out.write("            color: white;\n");
+      out.write("            padding: 8px 16px;\n");
+      out.write("            border-radius: 20px;\n");
+      out.write("            font-size: 0.9em;\n");
+      out.write("            display: inline-block;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        /* Back Button */\n");
+      out.write("        .back-button {\n");
+      out.write("            display: inline-block;\n");
+      out.write("            margin-top: 30px;\n");
+      out.write("            padding: 12px 30px;\n");
+      out.write("            background: white;\n");
+      out.write("            color: #667eea;\n");
+      out.write("            text-decoration: none;\n");
+      out.write("            border-radius: 8px;\n");
+      out.write("            border: 2px solid #667eea;\n");
+      out.write("            font-weight: 600;\n");
+      out.write("            transition: all 0.3s ease;\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .back-button:hover {\n");
+      out.write("            background: #667eea;\n");
+      out.write("            color: white;\n");
+      out.write("            transform: translateY(-2px);\n");
+      out.write("            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);\n");
+      out.write("        }\n");
+      out.write("        \n");
+      out.write("        .button-container {\n");
+      out.write("            text-align: center;\n");
+      out.write("            margin-top: 20px;\n");
+      out.write("        }\n");
+      out.write("    </style>\n");
+      out.write("</head>\n");
+      out.write("<body>\n");
+      out.write("    ");
+      out.write("\n");
+      out.write("    --%>\n");
+      out.write("    \n");
+      out.write("    ");
+      out.write("\n");
+      out.write("    \n");
+      out.write("    ");
+
+        // Retrieve all attributes set by the Servlet
+        String name = (String) request.getAttribute("name");
+        String studentId = (String) request.getAttribute("studentId");
+        String program = (String) request.getAttribute("program");
+        String email = (String) request.getAttribute("email");
+        String hobbies = (String) request.getAttribute("hobbies");
+        String introduction = (String) request.getAttribute("introduction");
+        
+        // Split hobbies by comma for display as tags
+        String[] hobbyArray = hobbies.split(",");
+    
+      out.write("\n");
+      out.write("    \n");
+      out.write("    <div class=\"profile-container\">\n");
+      out.write("        <!-- Header Section -->\n");
+      out.write("        <div class=\"profile-header\">\n");
+      out.write("            <!-- \n");
+      out.write("                ");
+      out.print( expression );
+      out.write(" : Outputs the value of Java expression\n");
+      out.write("                Equivalent to out.print(expression)\n");
+      out.write("            -->\n");
+      out.write("            <h1>");
+      out.print( name );
+      out.write("</h1>\n");
+      out.write("            <p class=\"student-id\">Student ID: ");
+      out.print( studentId );
+      out.write("</p>\n");
+      out.write("        </div>\n");
+      out.write("        \n");
+      out.write("        <!-- Body Section -->\n");
+      out.write("        <div class=\"profile-body\">\n");
+      out.write("            \n");
+      out.write("            <!-- Program Section -->\n");
+      out.write("            <div class=\"profile-section\">\n");
+      out.write("                <div class=\"section-title\">\n");
+      out.write("                    <span class=\"icon\">🎓</span>\n");
+      out.write("                    <span>Program</span>\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"section-content\">\n");
+      out.write("                    ");
+      out.print( program );
+      out.write("\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("            \n");
+      out.write("            <!-- Email Section -->\n");
+      out.write("            <div class=\"profile-section\">\n");
+      out.write("                <div class=\"section-title\">\n");
+      out.write("                    <span class=\"icon\">📧</span>\n");
+      out.write("                    <span>Email Address</span>\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"section-content\">\n");
+      out.write("                    <a href=\"mailto:");
+      out.print( email );
+      out.write("\" style=\"color: #667eea; text-decoration: none;\">\n");
+      out.write("                        ");
+      out.print( email );
+      out.write("\n");
+      out.write("                    </a>\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("            \n");
+      out.write("            <!-- Hobbies Section -->\n");
+      out.write("            <div class=\"profile-section\">\n");
+      out.write("                <div class=\"section-title\">\n");
+      out.write("                    <span class=\"icon\">🎯</span>\n");
+      out.write("                    <span>Hobbies & Interests</span>\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"hobbies-container\">\n");
+      out.write("                    ");
+      out.write("\n");
+      out.write("                    ");
+ for (String hobby : hobbyArray) { 
+      out.write("\n");
+      out.write("                        <span class=\"hobby-tag\">");
+      out.print( hobby.trim() );
+      out.write("</span>\n");
+      out.write("                    ");
+ } 
+      out.write("\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("            \n");
+      out.write("            <!-- Introduction Section -->\n");
+      out.write("            <div class=\"profile-section\">\n");
+      out.write("                <div class=\"section-title\">\n");
+      out.write("                    <span class=\"icon\">💭</span>\n");
+      out.write("                    <span>About Me</span>\n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"introduction-box\">\n");
+      out.write("                    ");
+      out.print( introduction );
+      out.write("\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("            \n");
+      out.write("            <!-- Back Button -->\n");
+      out.write("            <div class=\"button-container\">\n");
+      out.write("                <a href=\"index.html\" class=\"back-button\">\n");
+      out.write("                    ← Create Another Profile\n");
+      out.write("                </a>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("    </div>\n");
+      out.write("</body>\n");
+      out.write("</html>\n");
+      out.write("\n");
+    } catch (Throwable t) {
+      if (!(t instanceof SkipPageException)){
+        out = _jspx_out;
+        if (out != null && out.getBufferSize() != 0)
+          out.clearBuffer();
+        if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else throw new ServletException(t);
+      }
+    } finally {
+      _jspxFactory.releasePageContext(_jspx_page_context);
+    }
+  }
+}
