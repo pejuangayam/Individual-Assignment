@@ -2,3 +2,7 @@ TO MAKE SURE THE GMAIL CAN BE OPEN ON BROWSER
 Go to:
 chrome://settings/handlers
 Enable → "Allow sites to ask to become default handlers"
+
+DATABASE NAME studentprofiles 
+LOCATION AT: InvAsg2/studentprofiles
+
